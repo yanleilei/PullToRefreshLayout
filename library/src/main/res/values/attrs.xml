@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PullToRefreshLayout">
+        <attr name="pull_resistance" format="float"/>
+        <attr name="pull_duration" format="integer"/>
+        <attr name="pull_pullMaxSize" format="dimension"/>
+
+        <attr name="pull_displayResourceId" format="reference"/>
+        <attr name="pull_containerResourceId" format="reference"/>
+
+        <attr name="pull_headerType">
+            <enum name="indicator" value="0x00"/>
+            <enum name="flip" value="0x01"/>
+            <enum name="material" value="0x02"/>
+            <enum name="display" value="0x03"/>
+        </attr>
+        <attr name="pull_headerStrategy">
+            <enum name="follow" value="0x00"/>
+            <enum name="overlap" value="0x01"/>
+            <enum name="front" value="0x02"/>
+            <enum name="scroll" value="0x03"/>
+        </attr>
+        <attr name="pull_refreshMode">
+            <enum name="refresh_both" value="0x00"/>
+            <enum name="refresh_top" value="0x00"/>
+            <enum name="refresh_bottom" value="0x00"/>
+            <enum name="refresh_none" value="0x00"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

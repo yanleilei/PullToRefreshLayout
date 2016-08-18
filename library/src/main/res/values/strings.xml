@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Library</string>
+    <string name="pull_to_refresh_pull">下拉刷新</string>
+    <string name="pull_to_refresh_release">松开刷新</string>
+    <string name="pull_to_refresh_refreshing">刷新中…</string>
+    <string name="pull_to_refresh_time">上次刷新时间:%1$s</string>
+    <string name="pull_to_refresh_time_first">上次刷新时间:无</string>
+    <string name="pull_to_refresh_complete">刷新完成</string>
+
+    <string name="pull_to_refresh_loading">加载中</string>
+    <string name="pull_to_refresh_check_network">网络异常,请检测</string>
+    <string name="pull_to_refresh_retry">重试</string>
+</resources>

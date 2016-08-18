@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Library</string>
+    <string name="pull_to_refresh_pull">pull to refresh</string>
+    <string name="pull_to_refresh_release">release to refreshing</string>
+    <string name="pull_to_refresh_refreshing">refreshing…</string>
+    <string name="pull_to_refresh_time">last refresh time:%1$s</string>
+    <string name="pull_to_refresh_time_first">last refresh time:never</string>
+    <string name="pull_to_refresh_complete">refreshing complete</string>
+
+    <string name="pull_to_refresh_loading">loading</string>
+</resources>

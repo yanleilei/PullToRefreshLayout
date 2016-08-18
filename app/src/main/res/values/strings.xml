@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PullToRefresh</string>
+
+    <string-array name="header_items">
+        <item>front header</item>
+        <item>overlap header</item>
+        <item>follow header</item>
+        <item>scroll header</item>
+    </string-array>
+
+    <string-array name="refresh_items">
+        <item>Header items</item>
+        <item>RecyclerView items</item>
+        <item>Custom items</item>
+    </string-array>
+</resources>
