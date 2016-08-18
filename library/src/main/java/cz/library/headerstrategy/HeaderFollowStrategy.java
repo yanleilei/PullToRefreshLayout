@@ -15,8 +15,6 @@ import cz.library.header.RefreshHeader;
 public class HeaderFollowStrategy extends HeaderStrategy {
 
 
-    private static final String TAG = "HeaderFollowStrategy";
-
     public HeaderFollowStrategy(PullToRefreshLayout pullToRefreshLayout) {
         super(pullToRefreshLayout);
     }
@@ -74,6 +72,7 @@ public class HeaderFollowStrategy extends HeaderStrategy {
         } else if(RefreshState.PULL_START==refreshState){
             pullToRefreshLayout.setReleasing(true);
             pullToRefreshLayout.startScroll(0, scrollY, 0, -scrollY,scrollDuration);
+            pullToRefreshLayout.postInvalidate();
         } else if(RefreshState.RELEASE_REFRESHING_START==refreshState){
             VelocityTracker velocityTracker = pullToRefreshLayout.getVelocityTracker();
             int scaledMinimumFlingVelocity = pullToRefreshLayout.getScaledMinimumFlingVelocity();
@@ -106,7 +105,6 @@ public class HeaderFollowStrategy extends HeaderStrategy {
             int scrollY = pullToRefreshLayout.getScrollY();
             //orientation
             int scrollDuration = pullToRefreshLayout.getScrollDuration();
-            Log.e(TAG,"onRefreshComplete:"+scrollY+" scrollDuration:"+scrollDuration);
             pullToRefreshLayout.startScroll(0,scrollY,0,-scrollY,scrollDuration);
             pullToRefreshLayout.requestLayout();
         }

@@ -38,7 +38,6 @@ public class HeaderFrontStrategy extends HeaderStrategy {
         PullToRefreshLayout pullToRefreshLayout = getPullToRefreshLayout();
         RefreshState refreshState = pullToRefreshLayout.getRefreshState();
         if(RefreshState.NONE==refreshState){
-            Log.e(TAG,"HeaderFrontStrategy layout");
             RefreshHeader refreshHeader = pullToRefreshLayout.getRefreshHeader();
             View headerView = refreshHeader.getRefreshHeaderView();
             if(null != headerView){

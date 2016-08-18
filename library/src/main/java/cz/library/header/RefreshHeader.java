@@ -1,16 +1,9 @@
 package cz.library.header;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.IntDef;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import cz.library.R;
 import cz.library.RefreshState;
 
 /**
@@ -26,7 +19,7 @@ public abstract class RefreshHeader {
         }
     }
     /**
-     * return view refresh height,sometime you can return view height,but if you want other special effects,you can return other value
+     * return view refresh height,sometimes you can return view height,but if you want other special effects,you can return other value
      * @return
      */
     public int getRefreshHeight(int height) {

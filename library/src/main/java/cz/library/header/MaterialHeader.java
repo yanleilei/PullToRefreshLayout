@@ -36,7 +36,6 @@ public class MaterialHeader extends RefreshHeader {
         drawable.setProgressRotation(rotation);
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
     @Override
     public void onRefreshStateChange(RefreshState state) {
         MaterialProgressDrawable drawable = materialProgressView.getMaterialDrawable();
