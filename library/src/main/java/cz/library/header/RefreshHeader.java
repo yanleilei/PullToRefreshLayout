@@ -19,6 +19,7 @@ import cz.library.RefreshState;
 public abstract class RefreshHeader {
     private static final String TAG = "RefreshHeader";
     protected  View headerView;
+
     public RefreshHeader(Context context, ViewGroup parent){
         if(null==context||null==parent){
             throw new NullPointerException("context or parent is null!");

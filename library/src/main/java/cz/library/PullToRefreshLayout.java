@@ -3,9 +3,7 @@ package cz.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.IntDef;
-import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.ScrollerCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -13,6 +11,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.Scroller;
 
 import cz.library.header.DisplayHeader;
 import cz.library.header.FlipHeader;
@@ -58,7 +57,7 @@ public class PullToRefreshLayout<V extends View> extends ViewGroup {
     public static final int HORIZONTAL=1;
 
     private int orientation;
-    private ScrollerCompat scroller;
+    private Scroller scroller;
     private RefreshState refreshState;
     private float resistance;
     private boolean isIntercept;
@@ -91,7 +90,7 @@ public class PullToRefreshLayout<V extends View> extends ViewGroup {
 
     public PullToRefreshLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        scroller = ScrollerCompat.create(context);
+        scroller = new Scroller(context);
         orientation = VERTICAL;
         refreshState = RefreshState.NONE;
 
@@ -199,21 +198,23 @@ public class PullToRefreshLayout<V extends View> extends ViewGroup {
 
     private int activePointerId = MotionEvent.INVALID_POINTER_ID;
     public void dealMulTouchEvent(MotionEvent ev) {
-        final int action = MotionEventCompat.getActionMasked(ev);
+        final int action = ev.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                final int pointerIndex = MotionEventCompat.getActionIndex(ev);
-                final float x = MotionEventCompat.getX(ev, pointerIndex);
-                final float y = MotionEventCompat.getY(ev, pointerIndex);
+                ;
+                final int pointerIndex = ev.getActionIndex();
+
+                final float x = ev.getX(pointerIndex);
+                final float y = ev.getY(pointerIndex);
                 lastX = x;
                 lastY = y;
-                activePointerId = MotionEventCompat.getPointerId(ev, 0);
+                activePointerId = ev.getPointerId(0);
                 break;
             }
             case MotionEvent.ACTION_MOVE: {
-                final int pointerIndex = MotionEventCompat.findPointerIndex(ev, activePointerId);
-                final float x = MotionEventCompat.getX(ev, pointerIndex);
-                final float y = MotionEventCompat.getY(ev, pointerIndex);
+                final int pointerIndex = ev.findPointerIndex(activePointerId);
+                final float x = ev.getX( pointerIndex);
+                final float y = ev.getY(pointerIndex);
                 distanceX = x - lastX;
                 distanceY = y - lastY;
                 lastX = x;
@@ -225,23 +226,23 @@ public class PullToRefreshLayout<V extends View> extends ViewGroup {
                 activePointerId = MotionEvent.INVALID_POINTER_ID;
                 break;
             case MotionEvent.ACTION_POINTER_DOWN: {
-                final int pointerIndex = MotionEventCompat.getActionIndex(ev);
-                final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
+                final int pointerIndex = ev.getActionIndex();
+                final int pointerId = ev.getPointerId(pointerIndex);
                 if (pointerId != activePointerId) {
-                    lastX = MotionEventCompat.getX(ev, pointerIndex);
-                    lastY = MotionEventCompat.getY(ev, pointerIndex);
-                    activePointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
+                    lastX = ev.getX(pointerIndex);
+                    lastY = ev.getY(pointerIndex);
+                    activePointerId = ev.getPointerId(pointerIndex);
                 }
                 break;
             }
             case MotionEvent.ACTION_POINTER_UP: {
-                final int pointerIndex = MotionEventCompat.getActionIndex(ev);
-                final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
+                final int pointerIndex = ev.getActionIndex();
+                final int pointerId = ev.getPointerId(pointerIndex);
                 if (pointerId == activePointerId) {
                     final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
-                    lastX = MotionEventCompat.getX(ev, newPointerIndex);
-                    lastY = MotionEventCompat.getY(ev, newPointerIndex);
-                    activePointerId = MotionEventCompat.getPointerId(ev, newPointerIndex);
+                    lastX = ev.getX(newPointerIndex);
+                    lastY = ev.getY(newPointerIndex);
+                    activePointerId = ev.getPointerId(newPointerIndex);
                 }
                 break;
             }

@@ -1,6 +1,7 @@
 package cz.library.header;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,7 +47,9 @@ public class IndicatorHeader extends RefreshHeader {
     @Override
     public void onRefreshOffset(float fraction, int height,int totalHeight) {
         //Log.e(TAG,"fraction:"+fraction+" height:"+height+" totalHeight:"+totalHeight);
-        ViewCompat.setRotation(indicatorView,360*fraction);
+        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.HONEYCOMB){
+            indicatorView.setRotation(360*fraction);
+        }
     }
 
     @Override
